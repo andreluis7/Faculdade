@@ -1,8 +1,7 @@
-package br.com.quintatarde.daotest;
+package br.com.quintanoite.daotest;
 
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.quintanoite.dao.ItemDao;
@@ -15,27 +14,24 @@ import br.com.quintanoite.domain.Venda;
 public class ItensDaoTest {
 
 	@Test
-	@Ignore
 	public void Salvar() {
-		
+
 		ProdutoDao produtoDao = new ProdutoDao();
-		
+
 		Produto produto = produtoDao.buscar(1L);
-		
+
 		VendaDao vendasDao = new VendaDao();
-		
+
 		Venda vendas = vendasDao.buscar(1L);
-		
-		
 
 		Item iten = new Item();// Instancia��o de objeto referente aos itens, para salvar no banco
-													// de dados
+								// de dados
 
-		iten.setQtd (6);
+		iten.setQtd(6);
 		iten.setValorParc(110.00f);// Preenchimento do campo respectivo � tabela 'Itens'
 		iten.setProd(produto);
 		iten.setVenda(vendas);
-		
+
 		ItemDao itenDao = new ItemDao();// Realiza��o da inser��o no banco de dados
 		itenDao.salvar(iten);
 
@@ -43,7 +39,6 @@ public class ItensDaoTest {
 	}
 
 	@Test
-	//@Ignore
 	public void listar() {
 
 		ItemDao itensDao = new ItemDao();
@@ -60,7 +55,6 @@ public class ItensDaoTest {
 	}
 
 	@Test
-	@Ignore
 	public void buscar() {
 
 		Long codigo = 5L;
@@ -80,8 +74,6 @@ public class ItensDaoTest {
 	}
 
 	@Test
-	@Ignore
-
 	public void excluir() {
 		Long codigo = 7L;
 		ItemDao itensDao = new ItemDao();
@@ -96,22 +88,22 @@ public class ItensDaoTest {
 			System.out.println(itens.getQtd());
 		}
 	}
-@Test
-@Ignore
-public void editar() {
-	Long codigo = 6L;
-	ItemDao itensDao = new ItemDao();
-	Item itens = itensDao.buscar(codigo);
 
-	if (itens == null) {
-		System.out.println("Nenhum registro encontrado");
+	@Test
+	public void editar() {
+		Long codigo = 6L;
+		ItemDao itensDao = new ItemDao();
+		Item itens = itensDao.buscar(codigo);
 
-	} else {
-		itens.setQtd(10);
-		itensDao.editar(itens);
-		System.out.println("Registro encontrado");
-		System.out.println(itens.getQtd());
+		if (itens == null) {
+			System.out.println("Nenhum registro encontrado");
+
+		} else {
+			itens.setQtd(10);
+			itensDao.editar(itens);
+			System.out.println("Registro encontrado");
+			System.out.println(itens.getQtd());
+		}
+
 	}
-	
-}
 }

@@ -1,11 +1,9 @@
-package br.com.quintatarde.daotest;
+package br.com.quintanoite.daotest;
 
 import java.util.Date;
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
-
 
 import br.com.quintanoite.dao.FuncionarioDao;
 import br.com.quintanoite.dao.VendaDao;
@@ -15,15 +13,14 @@ import br.com.quintanoite.domain.Venda;
 public class VendasDaoTest {
 
 	@Test
-	@Ignore
 	public void Salvar() {
-		
+
 		FuncionarioDao funcionarioDao = new FuncionarioDao();
-		
+
 		Funcionario funcionario = funcionarioDao.buscar(3L);
 
 		Venda venda = new Venda();// Instancia��o de objeto referente a vendas, para salvar no banco
-													// de dados
+									// de dados
 
 		venda.setHora(new Date());
 		venda.setTotal(2);
@@ -36,7 +33,6 @@ public class VendasDaoTest {
 	}
 
 	@Test
-	//@Ignore
 	public void listar() {
 
 		VendaDao vendaDao = new VendaDao();
@@ -52,7 +48,6 @@ public class VendasDaoTest {
 	}
 
 	@Test
-	@Ignore
 	public void buscar() {
 
 		Long codigo = 5L;
@@ -72,8 +67,6 @@ public class VendasDaoTest {
 	}
 
 	@Test
-	@Ignore
-
 	public void excluir() {
 		Long codigo = 7L;
 		VendaDao vendaDao = new VendaDao();
@@ -88,22 +81,22 @@ public class VendasDaoTest {
 			System.out.println(venda.getHora());
 		}
 	}
-@Test
-@Ignore
-public void editar() {
-	Long codigo = 6L;
-	VendaDao vendaDao = new VendaDao();
-	Venda venda = vendaDao.buscar(codigo);
 
-	if (venda == null) {
-		System.out.println("Nenhum registro encontrado");
+	@Test
+	public void editar() {
+		Long codigo = 6L;
+		VendaDao vendaDao = new VendaDao();
+		Venda venda = vendaDao.buscar(codigo);
 
-	} else {
-		venda.setHora(new Date());
-		vendaDao.editar(venda);
-		System.out.println("Registro encontrado");
-		System.out.println(venda.getHora());
+		if (venda == null) {
+			System.out.println("Nenhum registro encontrado");
+
+		} else {
+			venda.setHora(new Date());
+			vendaDao.editar(venda);
+			System.out.println("Registro encontrado");
+			System.out.println(venda.getHora());
+		}
+
 	}
-	
-}
 }

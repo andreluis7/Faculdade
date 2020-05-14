@@ -1,8 +1,7 @@
-package br.com.quinta.daotest;
+package br.com.quintanoite.daotest;
 
 import java.util.List;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import br.com.quintanoite.dao.FornecedorDao;
@@ -12,7 +11,6 @@ import br.com.quintanoite.domain.Fornecedor;
 public class FornecedorDaoTest {
 	
 	@Test
-	@Ignore
 	public void salvar() {
 		
 		Fornecedor fornecedor = new Fornecedor();
@@ -27,7 +25,6 @@ public class FornecedorDaoTest {
 	}
 	
 	@Test
-	//@Ignore
 	public void listar() {
 
 		FornecedorDao fornecedorDao = new FornecedorDao();
@@ -63,7 +60,6 @@ public class FornecedorDaoTest {
 
 	}
 	@Test
-	@Ignore
 	public void excluir() {
 
 		Long codigo = 2L;
@@ -86,7 +82,6 @@ public class FornecedorDaoTest {
 	}
 
 	@Test
-	@Ignore
 	public void editar() {
 
 		Long codigo = 3L;
