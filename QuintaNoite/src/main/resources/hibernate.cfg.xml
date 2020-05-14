@@ -10,9 +10,9 @@
 
 		<!-- Configurações de Conexão com o Banco de Dados -->
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/bancotarde</property>
+		<property name="connection.url">jdbc:mysql://127.0.0.1:3306/banconoite</property>
 		<property name="connection.username">root</property>
-		<property name="connection.password">q1w2e3r4</property>
+		<property name="connection.password"></property>
 
 		<!-- Pool de Conexões Quantas conexões ao msm tempo -->
 		<property name="connection.pool_size">1</property>
@@ -34,11 +34,11 @@
 
 		<!-- Mapeamento das Entidades -->
 		
-		<mapping class= "br.com.quintatarde.domain.Fornecedor"/>
-		<mapping class= "br.com.quintatarde.domain.Funcionario"/>
-		<mapping class= "br.com.quintatarde.domain.Produto"/>
-		<mapping class= "br.com.quintatarde.domain.Venda"/>
-		<mapping class= "br.com.quintatarde.domain.Item"/>
+		<mapping class= "br.com.quintanoite.domain.Fornecedor"/>
+		<mapping class= "br.com.quintanoite.domain.Funcionario"/>
+		<mapping class= "br.com.quintanoite.domain.Produto"/>
+		<mapping class= "br.com.quintanoite.domain.Venda"/>
+		<mapping class= "br.com.quintanoite.domain.Item"/>
 		
 	
 
