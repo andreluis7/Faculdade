@@ -84,5 +84,13 @@
 			<version>1.0.10</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/org.omnifaces/omnifaces -->
+		<dependency>
+			<groupId>org.omnifaces</groupId>
+			<artifactId>omnifaces</artifactId>
+			<version>3.6</version>
+		</dependency>
+
+
 	</dependencies>
 </project>

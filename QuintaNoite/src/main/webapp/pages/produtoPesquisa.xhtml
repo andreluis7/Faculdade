@@ -9,27 +9,23 @@
 		<h:form>
 			<p:toolbar>
 				<f:facet name="left">
-					<h:outputText value="Fornecedor" />
+					<h:outputText value="Produto" />
 				</f:facet>
 			</p:toolbar>
 			<h:panelGrid columns="4">
 				<p:outputLabel value="Nome" />
 				<p:inputText maxlength="50" size="30" />
 				<p:button value="Buscar" />
-				<p:button value="Novo" outcome="/pages/fornecedorCadastro.xhtml" />
+				<p:button value="Novo" outcome="/pages/produtoCadastro.xhtml"/>
 			</h:panelGrid>
-
-			<p:dataTable emptyMessage="Nenhum registro encontrado"
-				value="#{fornecedorBean.fornecedores}" paginator="true" rows="10"
-				var="fornecedor">
-				<p:column headerText="Código">
-					<h:outputText value="#{fornecedor.codigo}" />
-				</p:column>
-				<p:column headerText="Nome">
-					<h:outputText value="#{fornecedor.nome}" />
-				</p:column>
-
-				<p:column headerText="Opções"></p:column>
+			
+			<p:dataTable emptyMessage="Nenhum registro encontrado">
+			<p:column headerText="Código"></p:column>
+			<p:column headerText="Nome"></p:column>
+			<p:column headerText="Valor"></p:column>
+			<p:column headerText="Quantidade"></p:column>
+			<p:column headerText="Fornecedor"></p:column>
+			<p:column headerText="Opções"></p:column>
 			</p:dataTable>
 		</h:form>
 
