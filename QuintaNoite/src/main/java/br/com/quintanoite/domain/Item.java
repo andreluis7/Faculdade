@@ -7,6 +7,8 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Item extends GenericDomain {
 	
+	private static final long serialVersionUID = 1L;
+
 	@Column (nullable = false)
 	private int qtd;
 	

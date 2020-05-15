@@ -1,16 +1,17 @@
 package br.com.quintanoite.domain;
 
 import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class Venda extends GenericDomain{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Column(nullable = false)
 	private Date hora;
 	

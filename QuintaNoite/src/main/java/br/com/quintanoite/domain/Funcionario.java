@@ -3,10 +3,11 @@ package br.com.quintanoite.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-@SuppressWarnings("serial")
 @Entity
 public class Funcionario extends GenericDomain{
 	
+	private static final long serialVersionUID = 1L;
+
 	@Column (length = 50, nullable = false)
 	private String nome;	
 	
