@@ -26,7 +26,7 @@ public class FuncionarioDaoTest {
 		FuncionarioDao funcionarioDao = new FuncionarioDao();// Realiza��o da inser��o no banco de dados
 		funcionarioDao.salvar(funcionario);
 
-		System.out.println("�xito no cadastro do funcionario");// mensagem de sucesso, imprimir.
+		System.out.println("Cadastro do funcionário feito com sucesso!");// mensagem de sucesso, imprimir.
 	}
 
 	@Test

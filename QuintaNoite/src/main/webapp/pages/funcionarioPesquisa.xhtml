@@ -21,11 +21,21 @@
 				<p:button value="Novo" outcome="/pages/funcionarioCadastro.xhtml"/>
 			</h:panelGrid>
 			
-			<p:dataTable emptyMessage="Nenhum registro encontrado">
-			<p:column headerText="Código"></p:column>
-			<p:column headerText="Nome"></p:column>
-			<p:column headerText="Cpf"></p:column>
-			<p:column headerText="Função"></p:column>
+			<p:dataTable emptyMessage="Nenhum registro encontrado"
+			value="#{funcionarioBean.funcionarios}" paginator="true" rows="10"
+				var="funcionario">
+			<p:column headerText="Código">
+				<h:outputText value="#{funcionario.codigo}" />
+			</p:column>
+			<p:column headerText="Nome">
+				<h:outputText value="#{funcionario.nome}" />
+			</p:column>
+			<p:column headerText="Cpf">
+				<h:outputText value="#{funcionario.cpf}" />
+			</p:column>
+			<p:column headerText="Função">
+				<h:outputText value="#{funcionario.funcao}" />
+			</p:column>
 			<p:column headerText="Opções"></p:column>
 			</p:dataTable>
 		</h:form>

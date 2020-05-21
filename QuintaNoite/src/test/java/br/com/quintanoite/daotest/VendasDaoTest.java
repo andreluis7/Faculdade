@@ -17,7 +17,7 @@ public class VendasDaoTest {
 
 		FuncionarioDao funcionarioDao = new FuncionarioDao();
 
-		Funcionario funcionario = funcionarioDao.buscar(3L);
+		Funcionario funcionario = funcionarioDao.buscar(1L);
 
 		Venda venda = new Venda();// Instancia��o de objeto referente a vendas, para salvar no banco
 									// de dados
@@ -29,7 +29,7 @@ public class VendasDaoTest {
 		VendaDao vendasDao = new VendaDao();// Realiza��o da inser��o no banco de dados
 		vendasDao.salvar(venda);
 
-		System.out.println("�xito no cadastro da venda");// mensagem de sucesso, imprimir.
+		System.out.println("Venda salva com sucesso!!!");// mensagem de sucesso, imprimir.
 	}
 
 	@Test

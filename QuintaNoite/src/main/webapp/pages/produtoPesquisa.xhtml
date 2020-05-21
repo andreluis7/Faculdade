@@ -19,12 +19,24 @@
 				<p:button value="Novo" outcome="/pages/produtoCadastro.xhtml"/>
 			</h:panelGrid>
 			
-			<p:dataTable emptyMessage="Nenhum registro encontrado">
-			<p:column headerText="Código"></p:column>
-			<p:column headerText="Nome"></p:column>
-			<p:column headerText="Valor"></p:column>
-			<p:column headerText="Quantidade"></p:column>
-			<p:column headerText="Fornecedor"></p:column>
+			<p:dataTable emptyMessage="Nenhum registro encontrado" 
+			value="#{produtoBean.produtos}" paginator="true" rows="10"
+				var="produto">
+			<p:column headerText="Código">
+				<h:outputText value="#{produto.codigo}" />
+			</p:column>
+			<p:column headerText="Nome">
+				<h:outputText value="#{produto.nome}" />
+			</p:column>
+			<p:column headerText="Valor">
+				<h:outputText value="#{produto.valor}" />
+			</p:column>
+			<p:column headerText="Quantidade">
+				<h:outputText value="#{produto.qtde}" />
+			</p:column>
+			<p:column headerText="Fornecedor">
+				<h:outputText value="#{produto.fornecedor.nome}" />
+			</p:column>
 			<p:column headerText="Opções"></p:column>
 			</p:dataTable>
 		</h:form>

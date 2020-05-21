@@ -15,7 +15,7 @@ public class ProdutoDaoTest {
 	public void Salvar() {
 
 		FornecedorDao fornecedorDao = new FornecedorDao();
-		Fornecedor fornecedor = fornecedorDao.buscar(4L);
+		Fornecedor fornecedor = fornecedorDao.buscar(1L);
 
 		Produto produto = new Produto();// Instancia��o de objeto referente o fornecedor, para salvar no banco
 										// de dados
