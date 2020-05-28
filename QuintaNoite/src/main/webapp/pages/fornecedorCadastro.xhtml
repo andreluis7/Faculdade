@@ -6,23 +6,26 @@
 	template="/templates/template.xhtml">
 	<ui:define name="conteudo">
 
-		<h:form>
+		<h:form id="formFornecedor">
 			<p:toolbar>
 				<f:facet name="left">
 					<h:outputText value="Fornecedor" />
 				</f:facet>
 			</p:toolbar>
-			<h:panelGrid columns="2">
+			<h:panelGrid columns="2" id="panelFornecedor">
 				<p:outputLabel value="Nome" />
-				<p:inputText maxlength="50" size="30" />
+				<p:inputText maxlength="50" size="30" id="nome"
+					value="#{fornecedorBean.fornecedor.nome}" />
 			</h:panelGrid>
-			
+
 			<h:panelGrid columns="5">
-			<p:commandButton value="Novo"/>
-			<p:commandButton value="Salvar"/>
-			<p:commandButton value="Editar"/>
-			<p:commandButton value="Excluir"/>
-			<p:button value="Voltar" outcome="/pages/fornecedorPesquisa.xhtml"/>
+				<p:commandButton value="Novo" />
+				<p:commandButton value="Salvar"
+					actionListener="#{fornecedorBean.salvar}"
+					update="msgGlobal, :formFornecedor:panelFornecedor" />
+				<p:commandButton value="Editar" />
+				<p:commandButton value="Excluir" />
+				<p:button value="Voltar" outcome="/pages/fornecedorPesquisa.xhtml" />
 			</h:panelGrid>
 
 		</h:form>

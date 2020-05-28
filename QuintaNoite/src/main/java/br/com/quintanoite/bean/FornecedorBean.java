@@ -19,18 +19,33 @@ public class FornecedorBean implements Serializable {
 
 	private List<Fornecedor> fornecedores;
 
+	private Fornecedor fornecedor;
+
 	@PostConstruct
 	public void listar() {
 		try {
 			FornecedorDao fornecedorDao = new FornecedorDao();
-
 			fornecedores = fornecedorDao.listar();
-
 		} catch (RuntimeException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao listar os fornecedores");
 			erro.printStackTrace();
 		}
+	}
 
+	public void novo() {
+		fornecedor = new Fornecedor();
+	}
+
+	public void salvar() {
+		try {
+			FornecedorDao fornecedorDao = new FornecedorDao();
+			fornecedorDao.salvar(fornecedor);
+			Messages.addGlobalInfo("Salvo fornecedor com sucesso!!!");
+			novo();
+		} catch (RuntimeException erro) {
+			Messages.addGlobalError("Ocorreu um erro ao salvar o fornecedor");
+			erro.printStackTrace();
+		}
 	}
 
 	public List<Fornecedor> getFornecedores() {
@@ -39,5 +54,16 @@ public class FornecedorBean implements Serializable {
 
 	public void setFornecedores(List<Fornecedor> fornecedores) {
 		this.fornecedores = fornecedores;
+	}
+
+	public Fornecedor getFornecedor() {
+		if (fornecedor == null) {
+			fornecedor = new Fornecedor();
+		}
+		return fornecedor;
+	}
+
+	public void setFornecedor(Fornecedor fornecedor) {
+		this.fornecedor = fornecedor;
 	}
 }
