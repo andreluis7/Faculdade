@@ -4,6 +4,13 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/templates/template.xhtml">
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:event listener="#{funcionarioBean.carregarCadastro()}"
+				type="preRenderView" />
+		</f:metadata>
+	</ui:define>
 	<ui:define name="conteudo">
 
 		<h:form id="formFuncionario">
@@ -38,8 +45,12 @@
 				<p:commandButton value="Salvar"
 					actionListener="#{funcionarioBean.salvar}"
 					update="msgGlobal, :formFuncionario:panelFuncionario" />
-				<p:commandButton value="Editar" />
-				<p:commandButton value="Excluir" />
+				<p:commandButton value="Editar"
+					actionListener="#{funcionarioBean.editar}"
+					update="msgGlobal, :formFuncionario:panelFuncionario" />
+				<p:commandButton value="Excluir"
+					actionListener="#{funcionarioBean.excluir}"
+					update="msgGlobal, :formFuncionario:panelFuncionario" />
 				<p:button value="Voltar" outcome="/pages/funcionarioPesquisa.xhtml" />
 			</h:panelGrid>
 

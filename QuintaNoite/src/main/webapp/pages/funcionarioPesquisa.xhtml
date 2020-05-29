@@ -16,27 +16,38 @@
 				<p:outputLabel value="Nome" />
 				<p:inputText maxlength="50" size="30" />
 				<p:outputLabel value="CPF" />
-				<p:inputMask mask="999.999.999-99" maxlength="20" size="20"/>
+				<p:inputMask mask="999.999.999-99" maxlength="20" size="20" />
 				<p:button value="Buscar" />
-				<p:button value="Novo" outcome="/pages/funcionarioCadastro.xhtml"/>
+				<p:button value="Novo" outcome="/pages/funcionarioCadastro.xhtml" />
 			</h:panelGrid>
-			
+
 			<p:dataTable emptyMessage="Nenhum registro encontrado"
-			value="#{funcionarioBean.funcionarios}" paginator="true" rows="10"
+				value="#{funcionarioBean.funcionarios}" paginator="true" rows="10"
 				var="funcionario">
-			<p:column headerText="Código">
-				<h:outputText value="#{funcionario.codigo}" />
-			</p:column>
-			<p:column headerText="Nome">
-				<h:outputText value="#{funcionario.nome}" />
-			</p:column>
-			<p:column headerText="Cpf">
-				<h:outputText value="#{funcionario.cpf}" />
-			</p:column>
-			<p:column headerText="Função">
-				<h:outputText value="#{funcionario.funcao}" />
-			</p:column>
-			<p:column headerText="Opções"></p:column>
+				<p:column headerText="Código">
+					<h:outputText value="#{funcionario.codigo}" />
+				</p:column>
+				<p:column headerText="Nome">
+					<h:outputText value="#{funcionario.nome}" />
+				</p:column>
+				<p:column headerText="Cpf">
+					<h:outputText value="#{funcionario.cpf}" />
+				</p:column>
+				<p:column headerText="Função">
+					<h:outputText value="#{funcionario.funcao}" />
+				</p:column>
+				<p:column headerText="Opções">
+					<p:button icon="ui-icon-pencil"
+						outcome="/pages/funcionarioCadastro.xhtml">
+
+						<f:param name="funCad" value="#{funcionario.codigo}" />
+					</p:button>
+
+					<p:button icon="ui-icon-trash"
+						outcome="/pages/funcionarioCadastro.xhtml">
+						<f:param name="funCad" value="#{funcionario.codigo}" />
+					</p:button>
+				</p:column>
 			</p:dataTable>
 		</h:form>
 

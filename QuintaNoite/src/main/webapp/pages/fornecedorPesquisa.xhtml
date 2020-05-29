@@ -16,7 +16,9 @@
 				<p:outputLabel value="Nome" />
 				<p:inputText maxlength="50" size="30" />
 				<p:button value="Buscar" />
-				<p:button value="Novo" outcome="/pages/fornecedorCadastro.xhtml" />
+				<p:button value="Novo" outcome="/pages/fornecedorCadastro.xhtml">
+					<f:param name="foracao" value="Salvar" />
+				</p:button>
 			</h:panelGrid>
 
 			<p:dataTable emptyMessage="Nenhum registro encontrado"
@@ -34,11 +36,14 @@
 						outcome="/pages/fornecedorCadastro.xhtml">
 
 						<f:param name="forCad" value="#{fornecedor.codigo}" />
+						<f:param name="foracao" value="Editar" />
 					</p:button>
 
 					<p:button icon="ui-icon-trash"
-						outcome="/pages/fornecedorCadastro.xhtml"></p:button>
-					<f:param name="forCad" value="#{fornecedor.codigo}" />
+						outcome="/pages/fornecedorCadastro.xhtml">
+						<f:param name="forCad" value="#{fornecedor.codigo}" />
+						<f:param name="foracao" value="Excluir" />
+					</p:button>
 				</p:column>
 			</p:dataTable>
 
