@@ -29,8 +29,19 @@
 					<h:outputText value="#{fornecedor.nome}" />
 				</p:column>
 
-				<p:column headerText="Opções"></p:column>
+				<p:column headerText="Opções">
+					<p:button icon="ui-icon-pencil"
+						outcome="/pages/fornecedorCadastro.xhtml">
+
+						<f:param name="forCad" value="#{fornecedor.codigo}" />
+					</p:button>
+
+					<p:button icon="ui-icon-trash"
+						outcome="/pages/fornecedorCadastro.xhtml"></p:button>
+					<f:param name="forCad" value="#{fornecedor.codigo}" />
+				</p:column>
 			</p:dataTable>
+
 		</h:form>
 
 	</ui:define>

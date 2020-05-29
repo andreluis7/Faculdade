@@ -10,6 +10,7 @@ import org.omnifaces.util.Messages;
 
 import br.com.quintanoite.dao.FornecedorDao;
 import br.com.quintanoite.domain.Fornecedor;
+import br.com.quintanoite.util.JsfUtil;
 
 @ManagedBean
 @ViewScoped
@@ -32,6 +33,23 @@ public class FornecedorBean implements Serializable {
 		}
 	}
 
+	public void carregarCadastro() {
+		try {
+			String valor = JsfUtil.getParam("forCad");
+			
+			if(valor != null ) {
+				Long codigo = Long.parseLong(valor);
+				FornecedorDao fornecedorDao = new FornecedorDao();
+				fornecedor = fornecedorDao.buscar(codigo);
+			} else {
+				fornecedor = new Fornecedor();
+			}
+		}catch (Exception e) {
+			Messages.addGlobalError("Erro ao carregar !!!");
+			e.printStackTrace();
+		}
+	}
+
 	public void novo() {
 		fornecedor = new Fornecedor();
 	}
@@ -44,6 +62,30 @@ public class FornecedorBean implements Serializable {
 			novo();
 		} catch (RuntimeException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao salvar o fornecedor");
+			erro.printStackTrace();
+		}
+	}
+	
+	public void excluir() {
+		try {
+			FornecedorDao fornecedorDao = new FornecedorDao();
+			fornecedorDao.excluir(fornecedor);
+			Messages.addGlobalInfo("Forncedor removido com sucesso!!!");
+			novo();
+		} catch (RuntimeException erro) {
+			Messages.addGlobalError("Ocorreu um erro ao remover o fornecedor");
+			erro.printStackTrace();
+		}
+	}
+	
+	public void editar() {
+		try {
+			FornecedorDao fornecedorDao = new FornecedorDao();
+			fornecedorDao.editar(fornecedor);
+			Messages.addGlobalInfo("Forncedor editado com sucesso!!!");
+			novo();
+		} catch (RuntimeException erro) {
+			Messages.addGlobalError("Ocorreu um erro ao editar o fornecedor");
 			erro.printStackTrace();
 		}
 	}

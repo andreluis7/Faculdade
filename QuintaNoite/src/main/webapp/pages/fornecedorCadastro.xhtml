@@ -4,6 +4,13 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/templates/template.xhtml">
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:event listener="#{fornecedorBean.carregarCadastro()}"
+				type="preRenderView" />
+		</f:metadata>
+	</ui:define>
 	<ui:define name="conteudo">
 
 		<h:form id="formFornecedor">
@@ -19,12 +26,18 @@
 			</h:panelGrid>
 
 			<h:panelGrid columns="5">
-				<p:commandButton value="Novo" />
+				<p:commandButton value="Novo"
+					actionListener="#{fornecedorBean.novo}"
+					update="msgGlobal, :formFornecedor:panelFornecedor" />
 				<p:commandButton value="Salvar"
 					actionListener="#{fornecedorBean.salvar}"
 					update="msgGlobal, :formFornecedor:panelFornecedor" />
-				<p:commandButton value="Editar" />
-				<p:commandButton value="Excluir" />
+				<p:commandButton value="Editar"
+					actionListener="#{fornecedorBean.editar}"
+					update="msgGlobal, :formFornecedor:panelFornecedor" />
+				<p:commandButton value="Excluir"
+					actionListener="#{fornecedorBean.excluir}"
+					update="msgGlobal, :formFornecedor:panelFornecedor" />
 				<p:button value="Voltar" outcome="/pages/fornecedorPesquisa.xhtml" />
 			</h:panelGrid>
 
