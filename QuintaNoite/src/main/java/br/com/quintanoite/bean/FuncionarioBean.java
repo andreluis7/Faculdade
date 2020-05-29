@@ -11,6 +11,7 @@ import org.omnifaces.util.Messages;
 
 import br.com.quintanoite.dao.FuncionarioDao;
 import br.com.quintanoite.domain.Funcionario;
+import br.com.quintanoite.util.JsfUtil;
 
 @ManagedBean
 @ViewScoped
@@ -35,6 +36,23 @@ public class FuncionarioBean implements Serializable {
 		}
 
 	}
+	
+	public void carregarCadastro() {
+		try {
+			String valor = JsfUtil.getParam("funCad");
+			
+			if(valor != null ) {
+				Long codigo = Long.parseLong(valor);
+				FuncionarioDao funcionarioDao = new FuncionarioDao();
+				funcionario = funcionarioDao.buscar(codigo);
+			} else {
+				funcionario = new Funcionario();
+			}
+		}catch (Exception e) {
+			Messages.addGlobalError("Erro ao carregar !!!");
+			e.printStackTrace();
+		}
+	}
 
 	public void novo() {
 		funcionario = new Funcionario();
@@ -48,6 +66,30 @@ public class FuncionarioBean implements Serializable {
 			novo();
 		} catch (RuntimeException erro) {
 			Messages.addGlobalError("Ocorreu um erro ao salvar o funcionario");
+			erro.printStackTrace();
+		}
+	}
+	
+	public void excluir() {
+		try {
+			FuncionarioDao funcionarioDao = new FuncionarioDao();
+			funcionarioDao.excluir(funcionario);
+			Messages.addGlobalInfo("Funcionário removido com sucesso!!!");
+			novo();
+		} catch (RuntimeException erro) {
+			Messages.addGlobalError("Ocorreu um erro ao remover o funcionário");
+			erro.printStackTrace();
+		}
+	}
+	
+	public void editar() {
+		try {
+			FuncionarioDao funcionarioDao = new FuncionarioDao();
+			funcionarioDao.editar(funcionario);
+			Messages.addGlobalInfo("Funcionário editado com sucesso!!!");
+			novo();
+		} catch (RuntimeException erro) {
+			Messages.addGlobalError("Ocorreu um erro ao editar o funcionário");
 			erro.printStackTrace();
 		}
 	}

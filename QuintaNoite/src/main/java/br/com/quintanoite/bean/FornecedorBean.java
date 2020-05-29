@@ -22,6 +22,8 @@ public class FornecedorBean implements Serializable {
 
 	private Fornecedor fornecedor;
 
+	private String acao;
+
 	@PostConstruct
 	public void listar() {
 		try {
@@ -35,16 +37,17 @@ public class FornecedorBean implements Serializable {
 
 	public void carregarCadastro() {
 		try {
+			acao = JsfUtil.getParam("foracao");
 			String valor = JsfUtil.getParam("forCad");
-			
-			if(valor != null ) {
+
+			if (valor != null) {
 				Long codigo = Long.parseLong(valor);
 				FornecedorDao fornecedorDao = new FornecedorDao();
 				fornecedor = fornecedorDao.buscar(codigo);
 			} else {
 				fornecedor = new Fornecedor();
 			}
-		}catch (Exception e) {
+		} catch (Exception e) {
 			Messages.addGlobalError("Erro ao carregar !!!");
 			e.printStackTrace();
 		}
@@ -65,7 +68,7 @@ public class FornecedorBean implements Serializable {
 			erro.printStackTrace();
 		}
 	}
-	
+
 	public void excluir() {
 		try {
 			FornecedorDao fornecedorDao = new FornecedorDao();
@@ -77,7 +80,7 @@ public class FornecedorBean implements Serializable {
 			erro.printStackTrace();
 		}
 	}
-	
+
 	public void editar() {
 		try {
 			FornecedorDao fornecedorDao = new FornecedorDao();
@@ -107,5 +110,13 @@ public class FornecedorBean implements Serializable {
 
 	public void setFornecedor(Fornecedor fornecedor) {
 		this.fornecedor = fornecedor;
+	}
+
+	public String getAcao() {
+		return acao;
+	}
+
+	public void setAcao(String acao) {
+		this.acao = acao;
 	}
 }
