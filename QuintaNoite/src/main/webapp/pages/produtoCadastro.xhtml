@@ -4,34 +4,53 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	template="/templates/template.xhtml">
+
+	<ui:define name="metadata">
+		<f:metadata>
+			<f:event listener="#{produtoBean.carregarCadastro()}"
+				type="preRenderView" />
+		</f:metadata>
+	</ui:define>
 	<ui:define name="conteudo">
 
-		<h:form>
+		<h:form id="formProduto">
 			<p:toolbar>
 				<f:facet name="left">
 					<h:outputText value="Produto" />
 				</f:facet>
 			</p:toolbar>
-			<h:panelGrid columns="2">
+			<h:panelGrid columns="2" id="panelProduto">
 				<p:outputLabel value="Nome" />
-				<p:inputText maxlength="50" size="30" />
+				<p:inputText maxlength="50" size="30"
+					value="#{produtoBean.produto.nome}" />
 				<p:outputLabel value="Valor" />
-				<p:inputText maxlength="50" size="30" />
+				<p:inputText maxlength="50" size="30"
+					value="#{produtoBean.produto.valor}" />
 				<p:outputLabel value="Quantidade" />
-				<p:inputText maxlength="50" size="30" />
+				<p:inputText maxlength="50" size="30"
+					value="#{produtoBean.produto.qtde}" />
 				<p:outputLabel value="Fornecedor" />
-				<p:selectOneMenu>
-				<f:selectItem itemValue="" itemLabel="Selecione um fornecedor"/>
-				<f:selectItems/>
+				<p:selectOneMenu value="#{produtoBean.produto.fornecedor}">
+					<f:selectItem itemValue="" itemLabel="Selecione um fornecedor" />
+					<f:selectItems value="#{produtoBean.fornecedores}" var="fornecedor"
+						itemValue="#{fornecedor}" itemLabel="#{fornecedor.nome}" />
 				</p:selectOneMenu>
 			</h:panelGrid>
-			
+
 			<h:panelGrid columns="5">
-			<p:commandButton value="Novo"/>
-			<p:commandButton value="Salvar"/>
-			<p:commandButton value="Editar"/>
-			<p:commandButton value="Excluir"/>
-			<p:button value="Voltar" outcome="/pages/produtoPesquisa.xhtml"/>
+				<p:commandButton value="Novo"
+					actionListener="#{produtoBean.novo}"
+					update="msgGlobal, :formProduto:panelProduto" />
+				<p:commandButton value="Salvar"
+					actionListener="#{produtoBean.salvar}"
+					update="msgGlobal, :formProduto:panelProduto" />
+				<p:commandButton value="Editar"
+					actionListener="#{produtoBean.editar}"
+					update="msgGlobal, :formProduto:panelProduto" />
+				<p:commandButton value="Excluir"
+					actionListener="#{produtoBean.excluir}"
+					update="msgGlobal, :formProduto:panelProduto" />
+				<p:button value="Voltar" outcome="/pages/produtoPesquisa.xhtml" />
 			</h:panelGrid>
 
 		</h:form>
