@@ -27,7 +27,7 @@ public class ProdutoBean implements Serializable {
 	private List<Fornecedor> fornecedores;
 
 	private Produto produto;
-	
+
 	private String acao;
 
 	@PostConstruct
@@ -44,7 +44,7 @@ public class ProdutoBean implements Serializable {
 
 	public void carregarCadastro() {
 		try {
-			
+
 			acao = JsfUtil.getParam("proAcao");
 			String valor = JsfUtil.getParam("proCad");
 
@@ -55,7 +55,7 @@ public class ProdutoBean implements Serializable {
 			} else {
 				produto = new Produto();
 			}
-			
+
 			FornecedorDao fornecedorDao = new FornecedorDao();
 			fornecedores = fornecedorDao.listar();
 
@@ -66,7 +66,16 @@ public class ProdutoBean implements Serializable {
 	}
 
 	public void novo() {
-		produto = new Produto();
+		try {
+			produto = new Produto();
+			
+			FornecedorDao fornecedorDao = new FornecedorDao();
+			fornecedores = fornecedorDao.listar();
+			
+		} catch (Exception e) {
+			Messages.addGlobalError("Erro ao carregar !!!");
+			e.printStackTrace();
+		}
 	}
 
 	public void salvar() {
@@ -131,13 +140,13 @@ public class ProdutoBean implements Serializable {
 	public void setFornecedores(List<Fornecedor> fornecedores) {
 		this.fornecedores = fornecedores;
 	}
-	
+
 	public String getAcao() {
 		return acao;
 	}
-	
+
 	public void setAcao(String acao) {
 		this.acao = acao;
 	}
-	
+
 }
